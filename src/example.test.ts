@@ -1,4 +1,5 @@
-import { Entity, MikroORM, PrimaryKey, Property } from '@mikro-orm/sqlite';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/es';
+import { MikroORM } from '@mikro-orm/sqlite';
 
 @Entity()
 class User {
@@ -28,7 +29,7 @@ beforeAll(async () => {
     debug: ['query', 'query-params'],
     allowGlobalContext: true, // only for testing
   });
-  await orm.schema.refreshDatabase();
+  await orm.schema.refresh();
 });
 
 afterAll(async () => {
